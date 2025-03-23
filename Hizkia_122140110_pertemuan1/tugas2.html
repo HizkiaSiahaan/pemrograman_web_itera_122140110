@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Warna</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .calculator {
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            width: 350px;
+            padding: 30px;
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 25px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin: 0;
+            font-weight: 600;
+            background: linear-gradient(90deg, #2ecc71, #3498db, #e74c3c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 2px solid #e0e0e0;
+            background-color: #f8f9fa;
+            font-size: 16px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #2ecc71;
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        }
+
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            flex: 1;
+            padding: 15px;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .button:active {
+            transform: translateY(1px);
+        }
+
+        .button-green {
+            background-color: #2ecc71;
+        }
+
+        .button-green:hover {
+            background-color: #27ae60;
+        }
+
+        .button-blue {
+            background-color: #3498db;
+        }
+
+        .button-blue:hover {
+            background-color: #2980b9;
+        }
+
+        .button-red {
+            background-color: #e74c3c;
+        }
+
+        .button-red:hover {
+            background-color: #c0392b;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 18px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 600;
+            border: 2px solid #f0f0f0;
+            transition: all 0.3s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .result-box::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, #333);
+        }
+
+        .operation-label {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin-bottom: 5px;
+            font-weight: normal;
+        }
+
+        .result-value {
+            color: #333;
+        }
+
+        .operation-icon {
+            font-size: 20px;
+            margin: 0 5px;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator-header">
+            <h1>Kalkulator Warna</h1>
+        </div>
+        
+        <div class="input-group">
+            <label for="angka1">Angka Pertama</label>
+            <input type="number" id="angka1" placeholder="Masukkan angka pertama">
+        </div>
+        
+        <div class="input-group">
+            <label for="operasi">Pilih Operasi</label>
+            <select id="operasi">
+                <option value="tambah">Penjumlahan (+)</option>
+                <option value="kurang">Pengurangan (-)</option>
+                <option value="kali">Perkalian (×)</option>
+                <option value="bagi">Pembagian (÷)</option>
+                <option value="pangkat">Perpangkatan (^)</option>
+                <option value="akar">Akar Kuadrat (√)</option>
+                <option value="modulus">Modulus (%)</option>
+            </select>
+        </div>
+        
+        <div class="input-group" id="angka2Container">
+            <label for="angka2">Angka Kedua</label>
+            <input type="number" id="angka2" placeholder="Masukkan angka kedua">
+        </div>
+        
+        <div class="button-container">
+            <button class="button button-green" id="hitungBtn">Hitung</button>
+            <button class="button button-blue" id="resetBtn">Reset</button>
+            <button class="button button-red" id="clearBtn">Hapus</button>
+        </div>
+        
+        <div class="result-box" id="hasilPerhitungan">
+            <div class="operation-label">Hasil Perhitungan</div>
+            <div class="result-value">Masukkan angka dan pilih operasi</div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const operasiSelect = document.getElementById('operasi');
+            const angka2Container = document.getElementById('angka2Container');
+            const angka1Input = document.getElementById('angka1');
+            const angka2Input = document.getElementById('angka2');
+            const hasilElement = document.getElementById('hasilPerhitungan');
+            
+            operasiSelect.addEventListener('change', function() {
+                if (this.value === 'akar') {
+                    angka2Container.style.display = 'none';
+                } else {
+                    angka2Container.style.display = 'block';
+                }
+            });
+            
+            document.getElementById('hitungBtn').addEventListener('click', kalkulasi);
+            
+            document.getElementById('resetBtn').addEventListener('click', function() {
+                angka1Input.value = '';
+                angka2Input.value = '';
+                operasiSelect.selectedIndex = 0;
+                hasilElement.innerHTML = `
+                    <div class="operation-label">Hasil Perhitungan</div>
+                    <div class="result-value">Masukkan angka dan pilih operasi</div>
+                `;
+                angka2Container.style.display = 'block';
+            });
+            
+            document.getElementById('clearBtn').addEventListener('click', function() {
+                hasilElement.innerHTML = `
+                    <div class="operation-label">Hasil Perhitungan</div>
+                    <div class="result-value">Masukkan angka dan pilih operasi</div>
+                `;
+            });
+            
+            function kalkulasi() {
+                const angka1 = parseFloat(angka1Input.value);
+                const angka2 = parseFloat(angka2Input.value);
+                const operasi = operasiSelect.value;
+                
+                if (isNaN(angka1)) {
+                    hasilElement.innerHTML = `
+                        <div class="operation-label">Error</div>
+                        <div class="result-value" style="color: #e74c3c;">Mohon masukkan angka pertama</div>
+                    `;
+                    return;
+                }
+                
+                if (operasi !== 'akar' && isNaN(angka2)) {
+                    hasilElement.innerHTML = `
+                        <div class="operation-label">Error</div>
+                        <div class="result-value" style="color: #e74c3c;">Mohon masukkan angka kedua</div>
+                    `;
+                    return;
+                }
+                
+                let hasil;
+                let operasiText;
+                let operasiSymbol;
+                let color;
+                
+                switch (operasi) {
+                    case 'tambah':
+                        hasil = angka1 + angka2;
+                        operasiText = `${angka1} + ${angka2}`;
+                        operasiSymbol = '+';
+                        color = '#2ecc71';
+                        break;
+                    case 'kurang':
+                        hasil = angka1 - angka2;
+                        operasiText = `${angka1} - ${angka2}`;
+                        operasiSymbol = '-';
+                        color = '#2ecc71';
+                        break;
+                    case 'kali':
+                        hasil = angka1 * angka2;
+                        operasiText = `${angka1} × ${angka2}`;
+                        operasiSymbol = '×';
+                        color = '#2ecc71';
+                        break;
+                    case 'bagi':
+                        if (angka2 === 0) {
+                            hasilElement.innerHTML = `
+                                <div class="operation-label">Error</div>
+                                <div class="result-value" style="color: #e74c3c;">Tidak dapat membagi dengan nol</div>
+                            `;
+                            return;
+                        }
+                        hasil = angka1 / angka2;
+                        operasiText = `${angka1} ÷ ${angka2}`;
+                        operasiSymbol = '÷';
+                        color = '#2ecc71';
+                        break;
+                    case 'pangkat':
+                        hasil = Math.pow(angka1, angka2);
+                        operasiText = `${angka1}^${angka2}`;
+                        operasiSymbol = '^';
+                        color = '#2ecc71';
+                        break;
+                    case 'akar':
+                        if (angka1 < 0) {
+                            hasilElement.innerHTML = `
+                                <div class="operation-label">Error</div>
+                                <div class="result-value" style="color: #e74c3c;">Tidak dapat menghitung akar dari bilangan negatif</div>
+                            `;
+                            return;
+                        }
+                        hasil = Math.sqrt(angka1);
+                        operasiText = `√${angka1}`;
+                        operasiSymbol = '√';
+                        color = '#2ecc71';
+                        break;
+                    case 'modulus':
+                        hasil = angka1 % angka2;
+                        operasiText = `${angka1} % ${angka2}`;
+                        operasiSymbol = '%';
+                        color = '#2ecc71';
+                        break;
+                }
+                
+                if (hasil % 1 !== 0) {
+                    hasil = hasil.toFixed(4);
+                    hasil = parseFloat(hasil);
+                }
+                
+                hasilElement.innerHTML = `
+                    <div class="operation-label">Operasi: ${operasiText}</div>
+                    <div class="result-value" style="color: ${color};">${hasil}</div>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>
