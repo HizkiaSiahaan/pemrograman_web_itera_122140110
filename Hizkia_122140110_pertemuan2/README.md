@@ -7,11 +7,14 @@ Catatan: Membuat catatan penting dengan format judul dan isi
 Semua data disimpan secara lokal di browser menggunakan localStorage, sehingga tetap tersedia meskipun browser ditutup.
 
 Screenshoot Fitur Daftar Tugas
+![Screenshot 2025-04-13 220056](https://github.com/user-attachments/assets/3fddeab3-6e33-473f-87b2-89e7bdb75863)
 
 Screenshoot Fitur Jadwal Kuliah
+![Screenshot 2025-04-13 221114](https://github.com/user-attachments/assets/ca262897-26af-4a64-be81-1892bf7ccbd1)
 
 Screenshoot Fitur Catatan
- 
+ ![Screenshot 2025-04-13 221142](https://github.com/user-attachments/assets/2ef24a74-8f2a-479e-acdf-1d9ffe8baeb6)
+
 Fitur ES6+ yang Diimplementasikan
 1.Classes:
     TaskManager, ScheduleManager, dan NoteManager diimplementasikan sebagai class ES6 Menggunakan method dan property class untuk mengelola data
