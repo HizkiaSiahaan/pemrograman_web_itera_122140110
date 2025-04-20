@@ -1,0 +1,158 @@
+/* src/pages/Stats/Stats.css */
+.stats-page {
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .stats-page h1 {
+    color: #2d3748;
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+  }
+  
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    text-align: center;
+  }
+  
+  .stat-card h3 {
+    color: #4b5563;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #4a6fa5;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-percentage {
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  
+  .charts-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1.5rem;
+  }
+  
+  .chart-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+  
+  .chart-card h3 {
+    color: #4b5563;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+  
+  .progress-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .progress-item {
+    width: 100%;
+  }
+  
+  .progress-label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    color: #4b5563;
+    font-weight: 500;
+  }
+  
+  .progress-bar {
+    height: 0.75rem;
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    overflow: hidden;
+  }
+  
+  .progress-fill {
+    height: 100%;
+    border-radius: 9999px;
+    transition: width 0.8s ease;
+  }
+  
+  .progress-fill.owned {
+    background-color: #4caf50;
+  }
+  
+  .progress-fill.reading {
+    background-color: #2196f3;
+  }
+  
+  .progress-fill.wishlist {
+    background-color: #ff9800;
+  }
+  
+  .author-card {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .author-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .author-name {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4a6fa5;
+    margin-bottom: 0.5rem;
+  }
+  
+  .author-count {
+    font-size: 1rem;
+    color: #6b7280;
+  }
+  
+  .empty-stats {
+    text-align: center;
+    padding: 3rem 1rem;
+    background-color: #f9fafb;
+    border-radius: 12px;
+    margin-top: 2rem;
+  }
+  
+  .empty-stats p {
+    color: #6b7280;
+    font-size: 1.125rem;
+  }
+  
+  @media (max-width: 768px) {
+    .charts-container {
+      grid-template-columns: 1fr;
+    }
+  }
