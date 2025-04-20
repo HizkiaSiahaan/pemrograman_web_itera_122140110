@@ -1,24 +1,44 @@
-import logo from './logo.svg';
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BookProvider } from './context/BookContext';
+import Home from './pages/Home/Home';
+import Stats from './pages/Stats/Stats';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BookProvider>
+      <Router>
+        <div className="app">
+          <header className="app-header">
+            <div className="header-content">
+              <div className="logo">
+                <span className="logo-icon">📚</span>
+                <h1>KiaTrack</h1>
+              </div>
+              <nav className="main-nav">
+                <Link to="/" className="nav-link">Home</Link>
+                <Link to="/stats" className="nav-link">Statistics</Link>
+              </nav>
+            </div>
+          </header>
+          
+          <main className="app-content">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/stats" element={<Stats />} />
+            </Routes>
+          </main>
+          
+          <footer className="app-footer">
+            <div className="footer-content">
+              <p>© {new Date().getFullYear()} KiaTrack - Personal Book Management</p>
+            </div>
+          </footer>
+        </div>
+      </Router>
+    </BookProvider>
   );
 }
 
