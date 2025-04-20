@@ -20,13 +20,13 @@ Aplikasi web untuk mengelola koleksi buku pribadi yang memungkinkan pengguna men
 
 ## Screenshot Aplikasi
 
-
+![image](https://github.com/user-attachments/assets/8d7a0bae-d1f9-48cf-ab68-5063b3ab9070)
 *Halaman utama dengan daftar buku*
 
-
+![image](https://github.com/user-attachments/assets/be16962e-caea-4ee3-ac16-ed0f5deca04b)
 *Form untuk menambahkan buku baru*
 
-
+![image](https://github.com/user-attachments/assets/377ecefa-763d-4846-b70a-6e9e22e0e8f4)
 *Halaman statistik koleksi buku*
 
 ## Cara Instalasi dan Menjalankan
