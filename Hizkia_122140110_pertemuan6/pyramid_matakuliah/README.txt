@@ -17,10 +17,10 @@ Aplikasi API RESTful untuk manajemen matakuliah yang dibangun menggunakan Pyrami
 
 ## Instalasi
 
-### 1. Clone Repository
+### 1. Persiapan Lingkungan
 
 ```bash
-git clone <url-repository>
+mkdir pyramid_matakuliah
 cd pyramid_matakuliah
 ```
 
